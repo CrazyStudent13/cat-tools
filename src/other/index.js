@@ -1,4 +1,11 @@
-// 计算字符串像素长度
+/**
+ *
+ *
+ * @export
+ * @param {*} str
+ * @param {*} standard
+ * @returns
+ */
 export function computeStrWidth(str, standard) {
   let canvas = document.createElement('canvas')
   let context = canvas.getContext('2d')
