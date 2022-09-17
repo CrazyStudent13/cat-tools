@@ -4,7 +4,6 @@
  * @export
  * @param {*} str
  * @param {*} standard
- * @returns
  */
 export function computeStrWidth(str, standard) {
   let canvas = document.createElement('canvas')

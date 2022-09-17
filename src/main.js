@@ -7,8 +7,6 @@ import * as other from './other/index.js'
 import * as string from './string/index.js'
 import * as time from './time/index.js'
 
-let catTools = {}
-
-Object.assign(catTools, array, common, time, number, dict, string, other)
+let catTools = Object.assign(array, common, time, number, dict, string, other)
 
 export { catTools }
