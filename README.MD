@@ -27,3 +27,12 @@ npm run doc
 npm run build
 
 ```
+
+
+
+## 参考
+
+[JS 工具库文档化 - JSDoc](https://juejin.cn/post/6844904160274415623#heading-5)
+
+[jsdoc主题：minami](https://github.com/nijikokun/minami)
+

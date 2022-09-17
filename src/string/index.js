@@ -17,12 +17,12 @@ export function isNullorUndefined(value) {
 /**
  * 字符串去重
  * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
+ * @author crazystudent13
+ * @todo 暂无待办
  * @param { string } str - 需要切割的字符串
  * @param { string } repeatStr - 需要分割的字符串
  * @param { string } separator - 分割的字符串
- * @return 去重结果
+ * @return 字符串分割结果
  */
 export function strDistinct(str, repeatStr, separator) {
   let tempArr = str.split(separator)
@@ -41,7 +41,7 @@ export function strDistinct(str, repeatStr, separator) {
  * @author，crazystudent13
  * @todo，暂无待办
  * @param { string } str - 需要判断长度的字符串
- * @return 去重结果
+ * @return 字符串长度
  */
 export function strLen(str) {
   var len = 0

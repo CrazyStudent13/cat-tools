@@ -2,7 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-// 数组对象去重
+// /**
+//  * 数组对象去重,根绝传入的key，判断去重的标准
+//  * @constructor
+//  * @author，crazystudent13
+//  * @todo，暂无待办
+//  * @param { array } arr - 需要去重的数组对象
+//  * @param { string } distinctKey - 去重的判断的key
+//  * @return 去重结果
+//  */
 function arrObjDistinct(arr, distinctKey) {
   let obj = {};
   let arrTemp = new Array();
@@ -13,10 +21,17 @@ function arrObjDistinct(arr, distinctKey) {
   return arrTemp
 }
 
-// 数组对象查重(可优化)
+/**
+ * 数组对象查重,根绝传入的key，判断当前数组是否有重复
+ * @constructor
+ * @author，crazystudent13
+ * @todo，实现方式不够优雅，所以这里需要处理一下，而且和另一个方法，命名似乎可以归类一下
+ * @param { array } arr - 需要去重的数组对象
+ * @param { string } distinctKey - 去重的判断的key
+ * @return { boolean }  去重判断结果结果,如果有重复项，返回true, 反之返回false
+ */
 function distinctArrKeys(arr, distinctKey) {
   let flag = true;
-  // 数组查重
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       console.log(arr[i][distinctKey], arr[j][distinctKey]);
@@ -26,11 +41,19 @@ function distinctArrKeys(arr, distinctKey) {
       }
     }
   }
-  // 如果有重复项，返回true,反之返回else
   return !flag
 }
 
-// 这个方法有优化空间，也许不仅仅可以是只返回下标
+/**
+ * 返回数组对象下标
+ * @constructor
+ * @author crazystudent13
+ * @todo 这个方法有优化空间，也许不仅仅可以是只返回下标
+ * @param { array } arr - 需要去重的数组对象
+ * @param { object } row - 需要判断的行
+ * @param { string } param - 需要判断的数组的对象
+ * @return { number } 具体的数组下表
+ */
 function findArrObjIndex(arr, row, param) {
   let currentIndex = {};
   if (arr.length > 0) {
@@ -44,7 +67,15 @@ function findArrObjIndex(arr, row, param) {
   return currentIndex
 }
 
-// 列表分组
+/**
+ * 列表分组
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无
+ * @param { array } arr - 需要分组的数组对象
+ * @param { string } param - 分组的判断字段
+ * @return { array } 分组完成的数组
+ */
 function groupByType(arr, param) {
   let map = {};
   let dest = [];
@@ -69,7 +100,14 @@ function groupByType(arr, param) {
   return dest
 }
 
-// 数组去空工具
+/**
+ * 数组去空工具
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无
+ * @param { array } arr - 需要出去数组中空值的数组
+ * @return { array } 去空完成的数组
+ */
 function removeArrayNull(arr) {
   let arrHandler = [];
   arrHandler = arr.filter((item) => {
@@ -78,13 +116,28 @@ function removeArrayNull(arr) {
   return arrHandler
 }
 
-// 数组去重
+/**
+ * 数组去重
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无
+ * @param { array } arr - 非数组对象，简单的一维数组
+ * @return { array } 去重完成的结果
+ */
 function uniqueArr(arr) {
   let arrTemp = arr || [];
   return Array.from(new Set(arrTemp))
 }
 
-// 将数组对象中的key转换为大写key, upper 代表转大写，lower代表转小写
+/**
+ * 数组key值大小写转换，常用来处理接口返回的不规则结果
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无
+ * @param { array } arr - 将数组对象中的key转换为大写key
+ * @param { string } code - 转换的方向 upper 代表转大写，lower代表转小写
+ * @return { array } 字段值转换完成的数组结果
+ */
 function upperOrLowerKeys(arr, code) {
   let newArray = [];
   arr.map((item) => {
@@ -248,13 +301,11 @@ var number = /*#__PURE__*/Object.freeze({
   isNumber: isNumber
 });
 
-/**
- *
- *
- * @export
- * @param {*} str
- * @param {*} standard
- */
+// /**
+//  * @constructor
+//  * @param {*} str
+//  * @param {*} standard
+//  */
 function computeStrWidth(str, standard) {
   let canvas = document.createElement('canvas');
   let context = canvas.getContext('2d');
@@ -342,12 +393,12 @@ function isNullorUndefined(value) {
 /**
  * 字符串去重
  * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
+ * @author crazystudent13
+ * @todo 暂无待办
  * @param { string } str - 需要切割的字符串
  * @param { string } repeatStr - 需要分割的字符串
  * @param { string } separator - 分割的字符串
- * @return 去重结果
+ * @return 字符串分割结果
  */
 function strDistinct(str, repeatStr, separator) {
   let tempArr = str.split(separator);
@@ -366,7 +417,7 @@ function strDistinct(str, repeatStr, separator) {
  * @author，crazystudent13
  * @todo，暂无待办
  * @param { string } str - 需要判断长度的字符串
- * @return 去重结果
+ * @return 字符串长度
  */
 function strLen(str) {
   var len = 0;

@@ -1,10 +1,8 @@
-/**
- *
- *
- * @export
- * @param {*} str
- * @param {*} standard
- */
+// /**
+//  * @constructor
+//  * @param {*} str
+//  * @param {*} standard
+//  */
 export function computeStrWidth(str, standard) {
   let canvas = document.createElement('canvas')
   let context = canvas.getContext('2d')
@@ -27,11 +25,6 @@ export function createRandomCode() {
   }
 
   return code
-}
-
-// 下划线命名转小驼峰
-export function lineToLowerCamelCase(value) {
-  return value.replace(/([A-Z])/g, '_$1').toLowerCase()
 }
 
 // 自定义导出excel文件

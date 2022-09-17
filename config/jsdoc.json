@@ -7,7 +7,7 @@
     "include": ["src", "README.md"],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)",
-    "exclude": ["src", "node_modules"]
+    "exclude": ["dist", "src/main.js", "node_modules"]
   },
   "plugins": ["plugins/markdown"],
   "templates": {
