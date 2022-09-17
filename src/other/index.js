@@ -29,6 +29,11 @@ export function createRandomCode() {
   return code
 }
 
+// 下划线命名转小驼峰
+export function lineToLowerCamelCase(value) {
+  return value.replace(/([A-Z])/g, '_$1').toLowerCase()
+}
+
 // 自定义导出excel文件
 export function exportExcelFile(array, tableLabel, fileName) {
   let fileNameTemp = fileName || new Date().valueOf()
