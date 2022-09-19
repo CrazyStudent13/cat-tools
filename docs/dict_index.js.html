@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>uniqueArr - Documentation</title>
+    <title>dict/index.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,224 +29,109 @@
 
 <div id="main">
     
-    <h1 class="page-title">uniqueArr</h1>
+    <h1 class="page-title">dict/index.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        uniqueArr
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="uniqueArr"><span class="type-signature"></span>new uniqueArr<span class="signature">(arr)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>数组去重</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>crazystudent13</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="array_index.js.html">array/index.js</a>, <a href="array_index.js.html#line123">line 123</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-    <dt class="tag-todo">To Do:</dt>
-    <dd class="tag-todo">
-        <ul>
-            <li>暂无</li>
-        </ul>
-    </dd>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>arr</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>array</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>非数组对象，简单的一维数组</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>array</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    <p>去重完成的结果</p>
-</div>
-
-    
-</div>
-
-
-
-</div>
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * 全局数据字典转换工具，用于转化那些不标准的数组字典，转换结果和elementUI的习惯相似，常用来处理接口
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无
+ * @param { array } array - 需要转换的数组
+ * @param { string } label - 需要转换的展示字段
+ * @param { string } value - 需要转换的值字段
+ * @return { array }  返回转换结果
+ */
+export function optionTranslate(array, label, value) {
+  const optionsArray = []
+  const labelCode = label || 'label'
+  const valueCode = value || 'value'
+  array.map((item) => {
+    let tempItem = item
+    tempItem.value = item[valueCode]
+    tempItem.label = item[labelCode]
+    tempItem.text = item[labelCode]
+    optionsArray.push(tempItem)
+  })
+  return optionsArray || []
+}
+
+
+/**
+ * 全局数据字典翻译工具
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无
+ * @param { string } value - 需要翻译的值
+ * @param { array } array - 需要翻译的数组
+ * @param { string } value - 转换方向，true代表返回的为key值，flase代表返回label值
+ * @return { array }  返回转换结果
+ */
+export function translate(value, array, type) {
+  let keyValue = null
+  let label = ''
+  if (type) {
+    array.map((item) => {
+      if (item.label === value || item.text === value) keyValue = item.value
+    })
+    return keyValue
+  } else {
+    array.map((item) => {
+      if (item.value === value) {
+        if (item.label !== undefined) {
+          label = item.label
+        } else {
+          label = item.text
+        }
+      }
+    })
+    return label
+  }
+}
+
+
+/**
+ * 翻译以code为准的数据字典
+ * @constructor
+ * @author，crazystudent13
+ * @todo，这个是可能将来会考虑废弃，或者是和数据字典翻译方法整合，所以，不推荐使用
+ * @param { string } value - 需要翻译的值
+ * @param { array } array - 需要翻译的数组
+ * @param { string } type - 转换方向，true代表返回的为key值，flase代表返回label值
+ * @return { array }  返回转换结果
+ */
+export function translateCode(value, array, type) {
+  let keyValue = null
+  let label = ''
+  if (type) {
+    array.map((item) => {
+      if (item.label === value || item.text === value) keyValue = item.code
+    })
+    return keyValue
+  } else {
+    array.map((item) => {
+      if (item.code === value) {
+        if (item.label !== undefined) {
+          label = item.label
+        } else {
+          label = item.text
+        }
+      }
+    })
+    return label
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

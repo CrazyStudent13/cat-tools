@@ -29,7 +29,14 @@ export function formatTime(date, fmt) {
   return fmt
 }
 
-// 时间戳转换工具
+/**
+ * 时间戳转换工具
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无待办
+ * @param { string } time - 需要转换的时间戳
+ * @return 时间戳转换结果
+ */
 export function timestampTranslate(time = +new Date()) {
   let date = new Date(time + 8 * 3600 * 1000) // 因为是北京时区，所以这里增加8小时
   return date.toJSON().substr(0, 19).replace('T', ' ')

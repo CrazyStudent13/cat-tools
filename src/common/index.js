@@ -1,4 +1,11 @@
-// 深拷贝
+/**
+ * 深拷贝,适用于数组和对象
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无
+ * @param { array } obj - 需要深拷贝的数组或对象
+ * @return { array }   返回拷贝结果
+ */
 export function deepCopy(obj) {
   if (!obj && typeof obj !== 'object') {
     throw new Error('error arguments')

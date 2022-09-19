@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>uniqueArr - Documentation</title>
+    <title>common/index.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,224 +29,44 @@
 
 <div id="main">
     
-    <h1 class="page-title">uniqueArr</h1>
+    <h1 class="page-title">common/index.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        uniqueArr
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="uniqueArr"><span class="type-signature"></span>new uniqueArr<span class="signature">(arr)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>数组去重</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>crazystudent13</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="array_index.js.html">array/index.js</a>, <a href="array_index.js.html#line123">line 123</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-    <dt class="tag-todo">To Do:</dt>
-    <dd class="tag-todo">
-        <ul>
-            <li>暂无</li>
-        </ul>
-    </dd>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>arr</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>array</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>非数组对象，简单的一维数组</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>array</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    <p>去重完成的结果</p>
-</div>
-
-    
-</div>
-
-
-
-</div>
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 深拷贝,适用于数组和对象
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无
+ * @param { array } obj - 需要深拷贝的数组或对象
+ * @return { array }   返回拷贝结果
+ */
+export function deepCopy(obj) {
+  if (!obj &amp;&amp; typeof obj !== 'object') {
+    throw new Error('error arguments')
+  }
+  const targetObj = Array.isArray(obj) ? [] : {}
+  for (let key in obj) {
+    // 只对对象自有属性进行拷贝
+    if (obj.hasOwnProperty(key)) {
+      if (obj[key] &amp;&amp; typeof obj[key] === 'object') {
+        targetObj[key] = this.deepCopy(obj[key])
+      } else {
+        targetObj[key] = obj[key]
+      }
+    }
+  }
+  return targetObj
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

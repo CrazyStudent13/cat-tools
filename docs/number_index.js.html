@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>uniqueArr - Documentation</title>
+    <title>number/index.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,224 +29,78 @@
 
 <div id="main">
     
-    <h1 class="page-title">uniqueArr</h1>
+    <h1 class="page-title">number/index.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        uniqueArr
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="uniqueArr"><span class="type-signature"></span>new uniqueArr<span class="signature">(arr)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>数组去重</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>crazystudent13</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="array_index.js.html">array/index.js</a>, <a href="array_index.js.html#line123">line 123</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-    <dt class="tag-todo">To Do:</dt>
-    <dd class="tag-todo">
-        <ul>
-            <li>暂无</li>
-        </ul>
-    </dd>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>arr</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>array</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>非数组对象，简单的一维数组</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>array</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    <p>去重完成的结果</p>
-</div>
-
-    
-</div>
-
-
-
-</div>
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 数据最大值转化，将最大值转换为99+
+ * @constructor
+ * @author，crazystudent13
+ * @todo，这个会考虑给个最大值的自定义权限，目前先搁置
+ * @param { number } num - 需要转换的值
+ * @param { number } maxSize - 最大值限制
+ * @return { number }  返回转换结果，默认为0
+ */
+export function maxNumber(num, maxSize) {
+  let numTemp = num || 0
+  let maxSizeTemp = maxSize || 99
+  if (parseInt(numTemp) > maxSizeTemp) {
+    return '99+'
+  }
+  return num
+}
+
+
+/**
+ * 判断是否数字
+ * @constructor
+ * @author，crazystudent13
+ * @param { any } value - 需要判断的值
+ * @return { Boolean }  返回判断结果
+ */
+export function isNumber(value) {
+  return typeof value === 'number' &amp;&amp; isFinite(value)
+}
+
+
+/**
+ * 千分位转换,将数字转换为千分位
+ * @constructor
+ * @author，crazystudent13
+ * @todo，目前不支持对带小数的大数字处理
+ * @param { number } num - 需要千分位转换的值
+ * @return { number }  返回转换结果
+ */
+export function toThousandFilter(num) {
+  if (num === null || typeof num === 'undefined' || num === '' || num === 0) {
+    return 0
+  } else {
+    return (+num || 0).toString().replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+  }
+}
+
+
+// 千分位分隔器，考虑和上边的方法合并
+export function thousandsSeparator(num) {
+  if (typeof num === "string" || typeof num === "number") {
+    let value = String(num);
+    value = value.replace(/\$\s?|(,*)/g, "");
+    return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  } else {
+    return "0";
+  }
+}
+
+</code></pre>
+        </article>
+    </section>
 
 
 

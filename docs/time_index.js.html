@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>uniqueArr - Documentation</title>
+    <title>time/index.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,224 +29,62 @@
 
 <div id="main">
     
-    <h1 class="page-title">uniqueArr</h1>
+    <h1 class="page-title">time/index.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        uniqueArr
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="uniqueArr"><span class="type-signature"></span>new uniqueArr<span class="signature">(arr)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>数组去重</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>crazystudent13</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="array_index.js.html">array/index.js</a>, <a href="array_index.js.html#line123">line 123</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-    <dt class="tag-todo">To Do:</dt>
-    <dd class="tag-todo">
-        <ul>
-            <li>暂无</li>
-        </ul>
-    </dd>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>arr</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>array</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>非数组对象，简单的一维数组</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>array</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    <p>去重完成的结果</p>
-</div>
-
-    
-</div>
-
-
-
-</div>
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// 判断两个时间相差情况
+export function compareDate(startTime, endTime) {
+  let start = new Date(startTime)
+  let end = new Date(endTime)
+  let flag = start - end > 0
+
+  return flag
+}
+
+// 时间格式化插件
+export function formatTime(date, fmt) {
+  let newTime = new Date(date)
+  let ret
+  const opt = {
+    'Y+': newTime.getFullYear().toString(), // 年
+    'm+': (newTime.getMonth() + 1).toString(), // 月
+    'd+': newTime.getDate().toString(), // 日
+    'H+': newTime.getHours().toString(), // 时
+    'M+': newTime.getMinutes().toString(), // 分
+    'S+': newTime.getSeconds().toString(), // 秒
+    // 有其他格式化字符需求可以继续添加，必须转化成字符串
+  }
+  for (let k in opt) {
+    ret = new RegExp('(' + k + ')').exec(fmt)
+    if (ret) {
+      fmt = fmt.replace(ret[1], ret[1].length == 1 ? opt[k] : opt[k].padStart(ret[1].length, '0'))
+    }
+  }
+  return fmt
+}
+
+/**
+ * 时间戳转换工具
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无待办
+ * @param { string } time - 需要转换的时间戳
+ * @return 时间戳转换结果
+ */
+export function timestampTranslate(time = +new Date()) {
+  let date = new Date(time + 8 * 3600 * 1000) // 因为是北京时区，所以这里增加8小时
+  return date.toJSON().substr(0, 19).replace('T', ' ')
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
