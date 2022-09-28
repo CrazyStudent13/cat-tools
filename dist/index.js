@@ -163,7 +163,14 @@ var array = /*#__PURE__*/Object.freeze({
   upperOrLowerKeys: upperOrLowerKeys
 });
 
-// 深拷贝
+/**
+ * 深拷贝,适用于数组和对象
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无
+ * @param { array } obj - 需要深拷贝的数组或对象
+ * @return { array }   返回拷贝结果
+ */
 function deepCopy(obj) {
   if (!obj && typeof obj !== 'object') {
     throw new Error('error arguments')
@@ -187,7 +194,16 @@ var common = /*#__PURE__*/Object.freeze({
   deepCopy: deepCopy
 });
 
-// 全局数据字典转换工具，转化那些不标准的数组字典
+/**
+ * 全局数据字典转换工具，用于转化那些不标准的数组字典，转换结果和elementUI的习惯相似，常用来处理接口
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无
+ * @param { array } array - 需要转换的数组
+ * @param { string } label - 需要转换的展示字段
+ * @param { string } value - 需要转换的值字段
+ * @return { array }  返回转换结果
+ */
 function optionTranslate(array, label, value) {
   const optionsArray = [];
   const labelCode = label || 'label';
@@ -202,9 +218,18 @@ function optionTranslate(array, label, value) {
   return optionsArray || []
 }
 
-// 全局数据字典翻译工具
+
+/**
+ * 全局数据字典翻译工具
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无
+ * @param { string } value - 需要翻译的值
+ * @param { array } array - 需要翻译的数组
+ * @param { string } value - 转换方向，true代表返回的为key值，flase代表返回label值
+ * @return { array }  返回转换结果
+ */
 function translate(value, array, type) {
-  // type代表翻译类型，true代表返回的为key值，flase代表返回label值
   let keyValue = null;
   let label = '';
   if (type) {
@@ -226,9 +251,18 @@ function translate(value, array, type) {
   }
 }
 
-// 翻译以code为准的数据字典
+
+/**
+ * 翻译以code为准的数据字典
+ * @constructor
+ * @author，crazystudent13
+ * @todo，这个是可能将来会考虑废弃，或者是和数据字典翻译方法整合，所以，不推荐使用
+ * @param { string } value - 需要翻译的值
+ * @param { array } array - 需要翻译的数组
+ * @param { string } type - 转换方向，true代表返回的为key值，flase代表返回label值
+ * @return { array }  返回转换结果
+ */
 function translateCode(value, array, type) {
-  // type代表类型，true代表返回的为key值，flase代表返回label值
   let keyValue = null;
   let label = '';
   if (type) {
@@ -257,7 +291,15 @@ var dict = /*#__PURE__*/Object.freeze({
   translateCode: translateCode
 });
 
-// 数据最大值转化
+/**
+ * 数据最大值转化，将最大值转换为99+
+ * @constructor
+ * @author，crazystudent13
+ * @todo，这个会考虑给个最大值的自定义权限，目前先搁置
+ * @param { number } num - 需要转换的值
+ * @param { number } maxSize - 最大值限制
+ * @return { number }  返回转换结果，默认为0
+ */
 function maxNumber(num, maxSize) {
   let numTemp = num || 0;
   let maxSizeTemp = maxSize || 99;
@@ -267,7 +309,27 @@ function maxNumber(num, maxSize) {
   return num
 }
 
-// 千分位转换
+
+/**
+ * 判断是否数字
+ * @constructor
+ * @author，crazystudent13
+ * @param { any } value - 需要判断的值
+ * @return { Boolean }  返回判断结果
+ */
+function isNumber(value) {
+  return typeof value === 'number' && isFinite(value)
+}
+
+
+/**
+ * 千分位转换,将数字转换为千分位
+ * @constructor
+ * @author，crazystudent13
+ * @todo，目前不支持对带小数的大数字处理
+ * @param { number } num - 需要千分位转换的值
+ * @return { number }  返回转换结果
+ */
 function toThousandFilter(num) {
   if (num === null || typeof num === 'undefined' || num === '' || num === 0) {
     return 0
@@ -277,7 +339,7 @@ function toThousandFilter(num) {
 }
 
 
-// 千分位分隔器
+// 千分位分隔器，考虑和上边的方法合并
 function thousandsSeparator(num) {
   if (typeof num === "string" || typeof num === "number") {
     let value = String(num);
@@ -288,24 +350,22 @@ function thousandsSeparator(num) {
   }
 }
 
-// 判断是否数字
-function isNumber(value) {
-  return typeof value === 'number' && isFinite(value)
-}
-
 var number = /*#__PURE__*/Object.freeze({
   __proto__: null,
   maxNumber: maxNumber,
+  isNumber: isNumber,
   toThousandFilter: toThousandFilter,
-  thousandsSeparator: thousandsSeparator,
-  isNumber: isNumber
+  thousandsSeparator: thousandsSeparator
 });
 
-// /**
-//  * @constructor
-//  * @param {*} str
-//  * @param {*} standard
-//  */
+/**
+ * 判断字符串宽度，会用来在一些特殊的地方使用
+ * @constructor
+ * @author，crazystudent13
+ * @param { number } str - 需要判断字符串
+ * @param { string } standard - 字体标准，默认'normal 12px Robot'
+ * @return { number }  返回字符串宽度结果
+ */
 function computeStrWidth(str, standard) {
   let canvas = document.createElement('canvas');
   let context = canvas.getContext('2d');
@@ -316,10 +376,16 @@ function computeStrWidth(str, standard) {
   return metrics
 }
 
-// 生成随机码
-function createRandomCode() {
+/**
+ * 生成随机码,常用来做些简单的随机码
+ * @constructor
+ * @author，crazystudent13 
+ * @param { number } len - 需要生成的随机码位数
+ * @return { string }  返回字符串宽度结果
+ */
+function createRandomCode(len) {
   let code = '';
-  let codeLength = 4;
+  let codeLength = len || 4;
   let random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
 
   for (let i = 0; i < codeLength; i++) {
@@ -330,20 +396,29 @@ function createRandomCode() {
   return code
 }
 
-// 自定义导出excel文件
-function exportExcelFile(array, tableLabel, fileName) {
+/**
+ * 前端导出自定义导出excel文件
+ * @constructor
+ * @author，crazystudent13
+ * @todo，这个方法不推荐使用，主要原因是标准和之前的数据字典参数不统一,未来可能会有破坏性的改动
+ * @param { number } array - 表单数据
+ * @param { array } tableHeader - 需要生成的表头数组，按照[{value:'',describe:''}] 的形式
+ * @param { string } fileName - 生成的文件名称
+ * @return { string }  返回字符串宽度结果
+ */
+function exportExcelFile(array, tableHeader, fileName) {
   let fileNameTemp = fileName || new Date().valueOf();
   let str = '';
 
   // 拼接表头
-  tableLabel.forEach((item) => {
+  tableHeader.forEach((item) => {
     str += item.describe + ',';
   });
   str += '\n';
 
   // 拼接表格数据
   array.forEach((element) => {
-    tableLabel.forEach((item) => {
+    tableHeader.forEach((item) => {
       str += element[item.value] + ',';
     });
     str += '\n';
@@ -471,7 +546,14 @@ function formatTime(date, fmt) {
   return fmt
 }
 
-// 时间戳转换工具
+/**
+ * 时间戳转换工具
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无待办
+ * @param { string } time - 需要转换的时间戳
+ * @return 时间戳转换结果
+ */
 function timestampTranslate(time = +new Date()) {
   let date = new Date(time + 8 * 3600 * 1000); // 因为是北京时区，所以这里增加8小时
   return date.toJSON().substr(0, 19).replace('T', ' ')
