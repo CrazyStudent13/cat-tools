@@ -1,8 +1,9 @@
 /**
- * 数据最大值转化，将最大值转换为99+
- * @constructor
+ * @description 数据最大值转化，将最大值转换为99+
+
  * @author，crazystudent13
  * @todo，这个会考虑给个最大值的自定义权限，目前先搁置
+ * @method maxNumber
  * @param { number } num - 需要转换的值
  * @param { number } maxSize - 最大值限制
  * @return { number }  返回转换结果，默认为0
@@ -18,9 +19,10 @@ export function maxNumber(num, maxSize) {
 
 
 /**
- * 判断是否数字
+ * @description 判断是否数字
  * @constructor
  * @author，crazystudent13
+ * @method isNumber
  * @param { any } value - 需要判断的值
  * @return { Boolean }  返回判断结果
  */
@@ -30,10 +32,11 @@ export function isNumber(value) {
 
 
 /**
- * 千分位转换,将数字转换为千分位
+ * @description 千分位转换,将数字转换为千分位
  * @constructor
  * @author，crazystudent13
  * @todo，目前不支持对带小数的大数字处理
+ * @method toThousandFilter
  * @param { number } num - 需要千分位转换的值
  * @return { number }  返回转换结果
  */

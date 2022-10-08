@@ -1,5 +1,5 @@
 /**
- * 判断字符串宽度，会用来在一些特殊的地方使用
+ * @description 判断字符串宽度，会用来在一些特殊的地方使用
  * @constructor
  * @author，crazystudent13
  * @param { number } str - 需要判断字符串
@@ -17,7 +17,7 @@ export function computeStrWidth(str, standard) {
 }
 
 /**
- * 生成随机码,常用来做些简单的随机码
+ * @description 生成随机码,常用来做些简单的随机码
  * @constructor
  * @author，crazystudent13 
  * @param { number } len - 需要生成的随机码位数
@@ -37,7 +37,7 @@ export function createRandomCode(len) {
 }
 
 /**
- * 前端导出自定义导出excel文件
+ * @description 前端导出自定义导出excel文件
  * @constructor
  * @author，crazystudent13
  * @todo，这个方法不推荐使用，主要原因是标准和之前的数据字典参数不统一,未来可能会有破坏性的改动
