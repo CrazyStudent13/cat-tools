@@ -1,10 +1,23 @@
 /**
- * Author: 远川
+ * Author: crazystudent13
  * Date: 2022-10-17 09:27:05
  * LastEditTime: 2022-10-17 09:32:25
  * desc: 整合目前的图片，文件相关的公用方法，整合了之前的方法，目前正在重写中，暂不发布
  * doc: 文章链接
  */
+/**
+ * 获取文件后缀名
+ * @constructor
+ * @author crazystudent13
+ * @todo 暂无待办
+ * @param { file } filename - 全部文件名，包括文件的后缀名
+ * @return 文件后缀名
+ */
+export function getFileType(filename) {
+  var startIndex = filename.lastIndexOf('.')
+  if (startIndex != -1) return filename.substring(startIndex + 1, filename.length).toLowerCase()
+  else return ''
+}
 
 /**
  * 压缩图片，前端制作缩略图，可以避免开发者自己去压缩图片
@@ -161,4 +174,41 @@ export function downloadExcelFile(blob, fileName) {
     // 其他浏览器
     navigator.msSaveBlob(blob, fileName)
   }
+}
+
+/**
+ * 自定义导出excel文件
+ * @constructor
+ * @author crazystudent13
+ * @todo 这个方法和downloadExcelFile   类似，要考虑合并
+ * @param { blob } blob - 需要下载的excel文件
+ * @param { string } fileName - 自定义文件名称
+ * @return 字符串分割结果
+ */
+export function exportExcelFile(data, tableLabel, fileName) {
+  let str = ''
+  // 拼接表头
+  tableLabel.forEach((item) => {
+    str += item.describe + ','
+  })
+  str += '\n'
+
+  // 拼接表格数据
+  data.forEach((element) => {
+    tableLabel.forEach((item) => {
+      str += element[item.name] + ','
+    })
+    str += '\n'
+  })
+
+  // 解决中文乱码问题
+  let blob = new Blob([str], { type: 'text/plain;charset=utf-8' })
+  blob = new Blob([String.fromCharCode(0xfeff), blob], { type: blob.type })
+  let object_url = window.URL.createObjectURL(blob)
+  let link = document.createElement('a')
+  link.href = object_url
+  link.download = fileName ? fileName + '.xls' : `file_${new Date().getTime()}` + '.xls'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
