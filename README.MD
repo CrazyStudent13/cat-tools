@@ -6,6 +6,24 @@
 
 详情参考[线上文档](https://demo.assetech.com.cn/index.html)
 
+
+
+## 使用
+
+```javascript
+# 引入工具
+npm i cat-tools -s-d
+```
+
+挂载到vue原型链上，这里以vue项目做例子，写在main.js中
+
+```javascript
+import { catTools as devTools } from 'cat-tools'
+Vue.prototype.$devTools = devTools
+```
+
+
+
 ## 开发
 
 ```javascript
@@ -18,6 +36,8 @@ cd cat-tools
 # 安装依赖
 npm install
 ```
+
+
 
 ## 发布
 
