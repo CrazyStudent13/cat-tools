@@ -4,7 +4,7 @@
 
 根据公司项目需求，将常用方法抽离出来，便于后续的方法的统一拓展。
 
-详情参考[线上文档](https://demo.assetech.com.cn/index.html)
+详情参考[线上文档]([Home - Documentation (crazystudent13.cn)](http://cattools.crazystudent13.cn/))
 
 ## 开发
 
@@ -27,7 +27,6 @@ npm run doc
 
 # 打包
 npm run build
-
 ```
 
 
