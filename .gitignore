@@ -19,5 +19,6 @@ bin-release/
 /cat-tools
 /node_modules
 /out
+/dist
 /docs
 .vscode/extensions.json
