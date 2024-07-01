@@ -76,6 +76,27 @@ export function exportExcelFile(array, tableHeader, fileName) {
   document.body.removeChild(link)
 }
 
+/**
+ * @description 前端语音播报方法
+ * @constructor
+ * @author，crazystudent13
+ * @todo，后续可能会加入其他参数，控制语音输出效果
+ * @param { message } string - 语音内容
+ */
+export function playSound({message}){
+  let synth = window.speechSynthesis
+  let recognition = new SpeechSynthesisUtterance()
+  // 语音播报的函数
+  recognition.lang = 'zh-cn' // 使用的语言:中文
+  recognition.volume = 1 // 声音音量：1
+  recognition.rate = 2 // 语速：1
+  recognition.pitch = 1 // 音高：1
+  recognition.text = message // 语音文字内容
+  synth.speak(recognition)
+}
+
+
+
 // 测试方法包
 export function logCat() {
   console.log('欢迎使用cat方法包')
