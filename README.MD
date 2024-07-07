@@ -8,10 +8,14 @@
 
 详情参考[线上文档](http://cattools.crazystudent13.cn)，如果您有兴趣，可以到[我的仓库](https://github.com/CrazyStudent13/cat-tools)，一起修改这个工具方法包。
 
+## 目的
+
+聚合常用的前端工具方法，解决平日里使用过程中，多个项目不同人写的不同方法，导致判断逻辑混乱，代码阅读麻烦的问题。
+
 ## 使用
 
 ```
-npm i cat-tools
+npm i cat-tools -s -d
 ```
 
 ### vue2
