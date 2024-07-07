@@ -4,9 +4,9 @@
 
 根据公司项目需求，将常用方法抽离出来，便于后续的方法的统一拓展。
 
-如今脱离公司了，索性从头开始做吧，目前支持vue2项目，后续会逐步支持vue3，react等项目。
+如今脱离公司了，这个方法包却可以一直使用，目前支持vue2项目，理论上vue3和react的项目中也可以使用，不过我这里没做测试，后续时间充裕的时候我会自己测试一下的。
 
-详情参考[线上文档](http://cattools.crazystudent13.cn)
+详情参考[线上文档](http://cattools.crazystudent13.cn)，如果您有兴趣，可以到[我的仓库](https://github.com/CrazyStudent13/cat-tools)，一起修改这个工具方法包。
 
 ## 使用
 
