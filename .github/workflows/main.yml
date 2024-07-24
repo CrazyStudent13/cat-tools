@@ -47,8 +47,8 @@ jobs:
           # TARGET: '/var/www/html'
           TARGET: '/usr/local/dist'
       # 推送信息到微信
-      # - name: 推送信息到微信
-      #   uses: easychen/github-action-server-chan@main
-      #   with:
-      #     sendkey: ${{ secrets.SERVER_J }}
-      #     title: '网站更新完毕'
+      - name: 推送信息到微信
+        uses: easychen/github-action-server-chan@main
+        with:
+          sendkey: ${{ secrets.SERVER_J }}
+          title: '网站更新完毕'
