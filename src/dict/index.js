@@ -39,12 +39,12 @@ export function translate(value, array, type) {
   let label = ''
   if (type) {
     array.map((item) => {
-      if (item.label === value || item.text === value) keyValue = item.value
+      if (item.label == value || item.text == value) keyValue = item.value
     })
     return keyValue
   } else {
     array.map((item) => {
-      if (item.value === value) {
+      if (item.value == value) {
         if (item.label !== undefined) {
           label = item.label
         } else {
@@ -72,12 +72,12 @@ export function translateCode(value, array, type) {
   let label = ''
   if (type) {
     array.map((item) => {
-      if (item.label === value || item.text === value) keyValue = item.code
+      if (item.label == value || item.text == value) keyValue = item.code
     })
     return keyValue
   } else {
     array.map((item) => {
-      if (item.code === value) {
+      if (item.code == value) {
         if (item.label !== undefined) {
           label = item.label
         } else {

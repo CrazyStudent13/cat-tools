@@ -39,6 +39,24 @@ console.log(state)
 
 
 
+
+
+## 使用
+
+```javascript
+# 引入工具
+npm i cat-tools -s-d
+```
+
+挂载到vue原型链上，这里以vue项目做例子，写在main.js中
+
+```javascript
+import { catTools as devTools } from 'cat-tools'
+Vue.prototype.$devTools = devTools
+```
+
+
+
 ## 开发
 
 针对于该工具包的开发者体用，
@@ -53,6 +71,8 @@ cd cat-tools
 # 安装依赖
 npm install
 ```
+
+
 
 ## 发布
 

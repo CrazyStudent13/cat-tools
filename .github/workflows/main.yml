@@ -1,0 +1,54 @@
+name: 更新文档到服务器
+
+on:
+  push:
+    branches:
+      - master
+
+# 推送之后执行一系列的任务
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 获取代码
+      - name: 迁出代码
+        # 使用action库 action/checkout获取代码
+        uses: actions/checkout@main
+      # 安装Node环境
+
+      - name: 安装node.js
+        # 使用action库  actions/setup-node安装node
+        uses: actions/setup-node@main
+        with:
+          node-version: lts/*
+
+      # 安装依赖
+      - name: 安装依赖
+        run: npm install
+
+      # 打包
+      - name: 生成文档
+        run: npm run doc
+      # 上传到腾讯云
+      - name: 发布到腾讯云
+        uses: easingthemes/ssh-deploy@main
+        env:
+          # 私钥
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          # SCP参数
+          ARGS: '-avzr --delete'
+          # 源目录
+          SOURCE: 'docs'
+          # 服务器ip
+          REMOTE_HOST: ${{ secrets.REMOTE_TXHOST }}
+          # 用户
+          REMOTE_USER: 'root'
+          # 目标地址
+          # TARGET: '/var/www/html'
+          TARGET: '/usr/local/dist'
+      # 推送信息到微信
+      - name: 推送信息到微信
+        uses: easychen/github-action-server-chan@main
+        with:
+          sendkey: ${{ secrets.SERVER_J }}
+          title: '网站更新完毕'
