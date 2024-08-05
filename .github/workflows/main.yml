@@ -51,4 +51,4 @@ jobs:
         uses: easychen/github-action-server-chan@main
         with:
           sendkey: ${{ secrets.SERVER_J }}
-          title: '网站更新完毕'
+          title: 'cat-tools更新完毕'
