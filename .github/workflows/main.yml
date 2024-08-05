@@ -30,9 +30,9 @@ jobs:
       - name: 生成JS工具包
         run: npm run build
 
-      # 打包
-      - name: 生成文档
-        run: npm run doc
+      # # 打包
+      # - name: 生成文档
+      #   run: npm run doc
 
       # 上传到腾讯云
       - name: 发布到腾讯云
