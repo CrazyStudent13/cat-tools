@@ -8,7 +8,7 @@
     "rollup": "^2.70.1"
   },
   "scripts": {
-    "doc": "jsdoc dist/index.js -c config/jsdoc.json",
+    "doc": "jsdoc ./dist/index.js -c config/jsdoc.json",
     "build": "rollup -c",
     "dev": "rollup -c -w"
   },
