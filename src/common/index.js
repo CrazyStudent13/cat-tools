@@ -7,7 +7,7 @@
  * @return { array }   返回拷贝结果
  */
 export function deepCopy(obj) {
-  if (!obj && typeof obj !== 'object') {
+  if (!obj || typeof obj !== 'object') {
     throw new Error('error arguments')
   }
   const targetObj = Array.isArray(obj) ? [] : {}
@@ -15,7 +15,7 @@ export function deepCopy(obj) {
     // 只对对象自有属性进行拷贝
     if (obj.hasOwnProperty(key)) {
       if (obj[key] && typeof obj[key] === 'object') {
-        targetObj[key] = this.deepCopy(obj[key])
+        targetObj[key] = deepCopy(obj[key])
       } else {
         targetObj[key] = obj[key]
       }

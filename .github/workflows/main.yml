@@ -1,14 +1,51 @@
-name: 更新文档到服务器
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 # 推送之后执行一系列的任务
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    steps:
+      # 获取代码
+      - name: 迁出代码
+        uses: actions/checkout@main
+
+      # 安装 Node 环境
+      - name: 安装 node.js
+        uses: actions/setup-node@main
+        with:
+          node-version: lts/*
+
+      # 安装依赖
+      - name: 安装依赖
+        run: npm install
+
+      # 运行测试
+      - name: 运行单元测试
+        run: npm test
+
+      # 生成并上传覆盖率报告
+      - name: 生成覆盖率报告
+        run: npm run test:coverage
+
+      # 上传覆盖率报告（可选）
+      - name: 上传覆盖率报告
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       # 获取代码
       - name: 迁出代码
@@ -36,19 +73,19 @@ jobs:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           # SCP参数
-          ARGS: '-avzr --delete'
+          ARGS: "-avzr --delete"
           # 源目录
-          SOURCE: 'docs'
+          SOURCE: "docs"
           # 服务器ip
           REMOTE_HOST: ${{ secrets.REMOTE_TXHOST }}
           # 用户
-          REMOTE_USER: 'root'
+          REMOTE_USER: "root"
           # 目标地址
           # TARGET: '/var/www/html'
-          TARGET: '/usr/local/dist'
+          TARGET: "/usr/local/dist"
       # 推送信息到微信
       - name: 推送信息到微信
         uses: easychen/github-action-server-chan@main
         with:
           sendkey: ${{ secrets.SERVER_J }}
-          title: '网站更新完毕'
+          title: "网站更新完毕"

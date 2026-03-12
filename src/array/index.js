@@ -1,13 +1,11 @@
-// /**
-//  * 数组对象去重,根绝传入的key，判断去重的标准
-// 
-// 
-//  * @author，crazystudent13
-//  * @todo，暂无待办
-//  * @param { array } arr - 需要去重的数组对象
-//  * @param { string } distinctKey - 去重的判断的key
-//  * @return 去重结果
-//  */
+/**
+ * 数组对象去重,根绝传入的key，判断去重的标准
+ * @author，crazystudent13
+ * @todo，暂无待办
+ * @param { array } arr - 需要去重的数组对象
+ * @param { string } distinctKey - 去重的判断的key
+ * @return 去重结果
+ */
 export function arrObjDistinct(arr, distinctKey) {
   let obj = {}
   let arrTemp = new Array()

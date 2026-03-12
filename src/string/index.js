@@ -17,7 +17,7 @@ export function strDistinct(str, repeatStr, separator) {
       arr.splice(indextemp, 1)
     }
   })
-  tempText = tempArr.join(separator)
+  let tempText = tempArr.join(separator)
   return tempText
 }
 
