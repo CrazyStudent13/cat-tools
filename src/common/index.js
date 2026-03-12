@@ -23,3 +23,20 @@ export function deepCopy(obj) {
   }
   return targetObj
 }
+
+
+/**
+ * 用来判断一个值是否为空的方法
+ * @constructor
+ * @author，crazystudent13
+ * @todo，暂无待办
+ * @param { any } value - 需要判断的值
+ * @return 去重结果
+ */
+export function isNullorUndefined(value) {
+  if (value === null || typeof value === 'undefined' || value === '' || value.length === 0 || JSON.stringify(value) === '{}') {
+    return true
+  } else {
+    return false
+  }
+}
