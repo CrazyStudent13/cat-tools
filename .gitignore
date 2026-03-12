@@ -21,3 +21,6 @@ bin-release/
 /out
 /docs
 .vscode/extensions.json
+
+# Lingma AI Assistant Config
+.lingma/
