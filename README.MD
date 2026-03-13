@@ -37,6 +37,23 @@ cd cat-tools
 npm install
 ```
 
+### 测试
+
+本项目使用 Jest 作为测试框架。
+
+```javascript
+# 运行所有测试
+npm test
+
+# 监听模式（文件修改后自动重新测试）
+npm run test:watch
+
+# 生成测试覆盖率报告
+npm run test:coverage
+```
+
+详见：[测试指南](./QUICK_START_TESTING.md)
+
 
 
 ## 发布

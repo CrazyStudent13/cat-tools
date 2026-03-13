@@ -11,7 +11,7 @@ module.exports = {
   
   // 测试文件匹配模式
   testMatch: [
-    '**/__tests__/**/*.js',
+    '**/test/**/*.js',
     '**/*.test.js'
   ],
   
