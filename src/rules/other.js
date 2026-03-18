@@ -7,24 +7,20 @@
  */
 
 /**
- * 判断是否第三方连接，这个是项目中使用的
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} path
- * @returns {Boolean} 判断结果
+ * @description 判断是否为外部链接（支持 http、https、mailto、tel 等协议）
+ * @author crazystudent13
+ * @param {string} path - 需要判断的路径或链接
+ * @return {boolean} 如果是外部链接返回 true，否则返回 false
  */
 export function isExternal(path) {
   return /^(https?:|mailto:|tel:)/.test(path)
 }
 
 /**
- * 判断是否为url
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} url
- * @returns {Boolean} 判断结果
+ * @description 验证 URL 格式
+ * @author crazystudent13
+ * @param {string} url - 需要验证的 URL 地址
+ * @return {boolean} 如果格式正确返回 true，否则返回 false
  */
 export function validURL(url) {
   const reg =
@@ -33,12 +29,10 @@ export function validURL(url) {
 }
 
 /**
- * 判断字符串是否小写
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} str
- * @returns {Boolean} 判断结果
+ * @description 验证字符串是否全为小写字母
+ * @author crazystudent13
+ * @param {string} str - 需要验证的字符串
+ * @return {boolean} 如果全为小写字母返回 true，否则返回 false
  */
 export function validLowerCase(str) {
   const reg = /^[a-z]+$/
@@ -46,12 +40,10 @@ export function validLowerCase(str) {
 }
 
 /**
- * 判断字符串是否大写
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} str
- * @returns {Boolean} 去重结果
+ * @description 验证字符串是否全为大写字母
+ * @author crazystudent13
+ * @param {string} str - 需要验证的字符串
+ * @return {boolean} 如果全为大写字母返回 true，否则返回 false
  */
 export function validUpperCase(str) {
   const reg = /^[A-Z]+$/

@@ -1,12 +1,9 @@
 /**
- * @description 数据最大值转化，将最大值转换为99+
-
- * @author，crazystudent13
- * @todo，这个会考虑给个最大值的自定义权限，目前先搁置
- * @method maxNumber
- * @param { number } num - 需要转换的值
- * @param { number } maxSize - 最大值限制
- * @return { number }  返回转换结果，默认为0
+ * @description 数字最大值限制，超过最大值时显示为 '99+'
+ * @author crazystudent13
+ * @param {number} [num=0] - 需要转换的数字
+ * @param {number} [maxSize=99] - 最大值限制
+ * @return {number|string} 返回转换结果，如果超过最大值则返回 '99+'
  */
 export function maxNumber(num, maxSize) {
   let numTemp = num || 0
@@ -19,12 +16,10 @@ export function maxNumber(num, maxSize) {
 
 
 /**
- * @description 判断是否数字
- * @constructor
- * @author，crazystudent13
- * @method isNumber
- * @param { any } value - 需要判断的值
- * @return { Boolean }  返回判断结果
+ * @description 判断是否为有效数字
+ * @author crazystudent13
+ * @param {*} value - 需要判断的值
+ * @return {boolean} 如果是有效数字返回 true，否则返回 false
  */
 export function isNumber(value) {
   return typeof value === 'number' && isFinite(value)
@@ -32,13 +27,10 @@ export function isNumber(value) {
 
 
 /**
- * @description 千分位转换,将数字转换为千分位
- * @constructor
- * @author，crazystudent13
- * @todo，目前不支持对带小数的大数字处理
- * @method toThousandFilter
- * @param { number } num - 需要千分位转换的值
- * @return { number }  返回转换结果
+ * @description 数字千分位格式化
+ * @author crazystudent13
+ * @param {number} num - 需要格式化的数字
+ * @return {string|number} 返回格式化后的字符串，如果输入无效则返回 0
  */
 export function toThousandFilter(num) {
   if (num === null || typeof num === 'undefined' || num === '' || num === 0) {
@@ -49,7 +41,12 @@ export function toThousandFilter(num) {
 }
 
 
-// 千分位分隔器，考虑和上边的方法合并
+/**
+ * @description 千分位分隔器，支持字符串和数字类型的输入
+ * @author crazystudent13
+ * @param {string|number} num - 需要分隔的数字或字符串
+ * @return {string} 返回分隔后的字符串，如果输入无效则返回 "0"
+ */
 export function thousandsSeparator(num) {
   if (typeof num === "string" || typeof num === "number") {
     let value = String(num);

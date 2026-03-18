@@ -7,12 +7,10 @@
  */
 
 /**
- * 判断是否字符串
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} str
- * @returns {Boolean} 判断结果
+ * @description 判断是否为字符串类型
+ * @author crazystudent13
+ * @param {*} str - 需要判断的值
+ * @return {boolean} 如果是字符串返回 true，否则返回 false
  */
 export function isString(str) {
   if (typeof str === 'string' || str instanceof String) {
@@ -22,12 +20,10 @@ export function isString(str) {
 }
 
 /**
- * 判断是否数组
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} arg
- * @returns {Boolean} 判断结果
+ * @description 判断是否为数组类型
+ * @author crazystudent13
+ * @param {*} arg - 需要判断的值
+ * @return {boolean} 如果是数组返回 true，否则返回 false
  */
 export function isArray(arg) {
   if (typeof Array.isArray === 'undefined') {
@@ -37,12 +33,10 @@ export function isArray(arg) {
 }
 
 /**
- * 验证是否为blob格式
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} data
- * @returns {Boolean} 判断结果
+ * @description 验证数据是否为 Blob 格式
+ * @author crazystudent13
+ * @param {Blob} data - 需要验证的数据
+ * @return {Promise<boolean>} 如果是 Blob 格式返回 true，否则返回 false
  */
 export async function blobValidate(data) {
   try {

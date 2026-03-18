@@ -8,12 +8,10 @@
 
 
 /**
- * 判断是否email
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param {string} email
- * @returns {Boolean} 判断结果
+ * @description 验证邮箱格式
+ * @author crazystudent13
+ * @param {string} email - 需要验证的邮箱地址
+ * @return {boolean} 如果格式正确返回 true，否则返回 false
  */
  export function validEmail(email) {
     const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/

@@ -1,14 +1,12 @@
 
 
 /**
- * 字符串去重
- * @constructor
+ * @description 字符串去重，移除指定的重复子串
  * @author crazystudent13
- * @todo 暂无待办
- * @param { string } str - 需要切割的字符串
- * @param { string } repeatStr - 需要分割的字符串
- * @param { string } separator - 分割的字符串
- * @return 字符串分割结果
+ * @param {string} str - 需要处理的字符串
+ * @param {string} repeatStr - 需要移除的重复子串
+ * @param {string} separator - 分隔符
+ * @return {string} 返回处理后的字符串
  */
 export function strDistinct(str, repeatStr, separator) {
   let tempArr = str.split(separator)
@@ -22,12 +20,10 @@ export function strDistinct(str, repeatStr, separator) {
 }
 
 /**
- * 判断字符串长度
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param { string } str - 需要判断长度的字符串
- * @return 字符串长度
+ * @description 计算字符串长度（中文按 2 个字符计，英文按 1 个字符计）
+ * @author crazystudent13
+ * @param {string} str - 需要计算长度的字符串
+ * @return {number} 返回字符串长度
  */
 export function strLen(str) {
   var len = 0

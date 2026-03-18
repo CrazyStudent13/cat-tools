@@ -6,12 +6,10 @@
  * doc: 文章链接
  */
 /**
- * 获取文件后缀名
- * @constructor
+ * @description 获取文件后缀名
  * @author crazystudent13
- * @todo 暂无待办
- * @param { file } filename - 全部文件名，包括文件的后缀名
- * @return 文件后缀名
+ * @param {string} filename - 文件名（包含后缀）
+ * @return {string} 返回小写格式的后缀名，如果没有后缀则返回空字符串
  */
 export function getFileType(filename) {
   var startIndex = filename.lastIndexOf('.')
@@ -20,13 +18,10 @@ export function getFileType(filename) {
 }
 
 /**
- * 压缩图片，前端制作缩略图，可以避免开发者自己去压缩图片
- * @constructor
+ * @description 图片压缩工具，前端生成缩略图
  * @author crazystudent13
- * @todo 暂无待办
- * @param { file } dataURI - 需要转换为文件的base64位码
- * @param { string } type - 文件类型
- * @return 转换后的Base64位码
+ * @param {HTMLImageElement} img - 需要压缩的图片元素
+ * @return {string} 返回压缩后的 Base64 编码
  */
 export function compressImg(img) {
   const canvas = document.createElement('canvas')
@@ -81,13 +76,11 @@ export function compressImg(img) {
 }
 
 /**
- * Base64转换为文件
- * @constructor
+ * @description Base64 编码转换为 Blob 对象
  * @author crazystudent13
- * @todo 暂无待办
- * @param { file } dataURI - 需要转换为文件的base64位码
- * @param { string } type - 文件类型
- * @return 转换后的Base64位码
+ * @param {string} dataURI - Base64 编码字符串
+ * @param {string} type - MIME 类型
+ * @return {Blob} 返回转换后的 Blob 对象
  */
 export function base64ToFile(dataURI, type) {
   let binary = atob(dataURI.split(',')[1])
@@ -99,12 +92,10 @@ export function base64ToFile(dataURI, type) {
 }
 
 /**
- * 图片转换为Base64位码
- * @constructor
+ * @description 图片转换为 Base64 编码
  * @author crazystudent13
- * @todo 图片和文件
- * @param { file } img - 需要转码的文件
- * @return 转换后的Base64位码
+ * @param {HTMLImageElement} img - 需要转换的图片元素
+ * @return {string} 返回 Base64 编码字符串
  */
 export function fileToBase64(img) {
   var canvas = document.createElement('canvas')
@@ -118,14 +109,13 @@ export function fileToBase64(img) {
 }
 
 /**
- * 判断文件及文件大小
- * @constructor
+ * @description 验证上传文件的类型和大小
  * @author crazystudent13
- * @todo 这里是将文件的大小和类型一起判断了，功能有些耦合，建议将这两种方法拆开
- * @param { string } file - 上传文件的名称(包含文件名)
- * @param { array } typeArr - 要限制的类型，
- * @param { number } size - 文件大小
- * @return 字符串分割结果
+ * @deprecated 方法耦合度高，建议拆分为类型验证和大小验证两个独立方法
+ * @param {File} file - 上传的文件对象
+ * @param {Array<string>} typeArr - 允许的文件类型数组
+ * @param {number} size - 文件大小限制（字节）
+ * @return {boolean} 验证通过返回 true，否则返回 false
  */
 export function judgeUploadFile(file, typeArr, size) {
   let FileExt = file.name.replace(/.+\./, '')
@@ -149,13 +139,10 @@ export function judgeUploadFile(file, typeArr, size) {
 }
 
 /**
- * 下载excel文件
- * @constructor
+ * @description 下载 Excel 文件
  * @author crazystudent13
- * @todo 这个方法暂时还不稳定，建议后期多做测试
- * @param { blob } blob - 需要下载的excel文件
- * @param { string } fileName - 自定义文件名称
- * @return 字符串分割结果
+ * @param {Blob} blob - Excel 文件的 Blob 对象
+ * @param {string} fileName - 自定义文件名称
  */
 export function downloadExcelFile(blob, fileName) {
   //  对于<a>标签，只有 Firefox 和 Chrome（内核） 支持 download 属性
@@ -177,13 +164,12 @@ export function downloadExcelFile(blob, fileName) {
 }
 
 /**
- * 自定义导出excel文件
- * @constructor
+ * @description 自定义导出 Excel 文件（不推荐使用）
  * @author crazystudent13
- * @todo 这个方法和downloadExcelFile   类似，要考虑合并
- * @param { blob } blob - 需要下载的excel文件
- * @param { string } fileName - 自定义文件名称
- * @return 字符串分割结果
+ * @deprecated 功能与 downloadExcelFile 类似，建议考虑合并
+ * @param {Array} data - 表格数据数组
+ * @param {Array} tableLabel - 表头配置数组
+ * @param {string} [fileName] - 自定义文件名称
  */
 export function exportExcelFile(data, tableLabel, fileName) {
   let str = ''

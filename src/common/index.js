@@ -1,10 +1,8 @@
 /**
- * @description 深拷贝,适用于数组和对象
- * @author，crazystudent13
- * @todo，暂无
- * @method deepCopy
- * @param { array } obj - 需要深拷贝的数组或对象
- * @return { array }   返回拷贝结果
+ * @description 深拷贝数组或对象
+ * @author crazystudent13
+ * @param {Array|Object} obj - 需要深拷贝的数组或对象
+ * @return {Array|Object} 返回拷贝后的结果
  */
 export function deepCopy(obj) {
   if (!obj || typeof obj !== 'object') {
@@ -26,12 +24,10 @@ export function deepCopy(obj) {
 
 
 /**
- * 用来判断一个值是否为空的方法
- * @constructor
- * @author，crazystudent13
- * @todo，暂无待办
- * @param { any } value - 需要判断的值
- * @return 去重结果
+ * @description 判断值是否为空（null、undefined、空字符串、空数组或空对象）
+ * @author crazystudent13
+ * @param {*} value - 需要判断的值
+ * @return {boolean} 如果为空返回 true，否则返回 false
  */
 export function isNullorUndefined(value) {
   if (value === null || typeof value === 'undefined' || value === '' || value.length === 0 || JSON.stringify(value) === '{}') {
