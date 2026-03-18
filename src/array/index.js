@@ -1,10 +1,9 @@
 /**
- * 数组对象去重,根绝传入的key，判断去重的标准
- * @author，crazystudent13
- * @todo，暂无待办
- * @param { array } arr - 需要去重的数组对象
- * @param { string } distinctKey - 去重的判断的key
- * @return 去重结果
+ * @description 数组对象去重，根据传入的 key 值判断重复项
+ * @author crazystudent13
+ * @param {Array} arr - 需要去重的数组对象
+ * @param {string} distinctKey - 用于去重判断的字段名
+ * @return {Array} 返回去重后的数组
  */
 export function arrObjDistinct(arr, distinctKey) {
   let obj = {}
@@ -17,13 +16,11 @@ export function arrObjDistinct(arr, distinctKey) {
 }
 
 /**
- * @description 数组对象查重,根绝传入的key，判断当前数组是否有重复
- * @author，crazystudent13
- * @todo，实现方式不够优雅，所以这里需要处理一下，而且和另一个方法，命名似乎可以归类一下
- * @method  distinctArrKeys
- * @param { array } arr - 需要去重的数组对象
- * @param { string } distinctKey - 去重的判断的key
- * @return { boolean }  去重判断结果结果,如果有重复项，返回true, 反之返回false
+ * @description 检查数组对象是否存在重复项，根据指定的 key 值判断
+ * @author crazystudent13
+ * @param {Array} arr - 需要检查的数组对象
+ * @param {string} distinctKey - 用于判断重复的字段名
+ * @return {boolean} 如果存在重复项返回 true，否则返回 false
  */
 export function distinctArrKeys(arr, distinctKey) {
   let flag = true
@@ -40,14 +37,12 @@ export function distinctArrKeys(arr, distinctKey) {
 }
 
 /**
- * @description 返回数组对象下标
+ * @description 查找数组对象中指定元素的索引位置
  * @author crazystudent13
- * @todo 这个方法有优化空间，也许不仅仅可以是只返回下标
- * @method  findArrObjIndex
- * @param { array } arr - 需要去重的数组对象
- * @param { object } row - 需要判断的行
- * @param { string } param - 需要判断的数组的对象
- * @return { number } 具体的数组下表
+ * @param {Array} arr - 要搜索的数组对象
+ * @param {Object} row - 要查找的元素对象
+ * @param {string} param - 用于比较的字段名
+ * @return {Object} 返回包含 index（索引）和 item（元素）的对象
  */
 export function findArrObjIndex(arr, row, param) {
   let currentIndex = {}
@@ -63,15 +58,11 @@ export function findArrObjIndex(arr, row, param) {
 }
 
 /**
- * @description 列表分组
-
-
+ * @description 根据指定字段对数组进行分组
  * @author crazystudent13
- * @todo 暂无
- * @method  groupByType
- * @param { array } arr - 需要分组的数组对象
- * @param { string } param - 分组的判断字段
- * @return { array } 分组完成的数组
+ * @param {Array} arr - 需要分组的数组对象
+ * @param {string} param - 用于分组的字段名
+ * @return {Array} 返回分组后的数组，格式为 [{name: '分组名', data: [数组项]}]
  */
 export function groupByType(arr, param) {
   let map = {}
@@ -98,14 +89,10 @@ export function groupByType(arr, param) {
 }
 
 /**
- * @description 数组去空工具
-
-
+ * @description 移除数组中的 null 值
  * @author crazystudent13
- * @todo 暂无
- * @method  removeArrayNull
- * @param { array } arr - 需要出去数组中空值的数组
- * @return { array } 去空完成的数组
+ * @param {Array} arr - 需要移除 null 值的数组
+ * @return {Array} 返回过滤后的数组
  */
 export function removeArrayNull(arr) {
   let arrHandler = []
@@ -116,14 +103,10 @@ export function removeArrayNull(arr) {
 }
 
 /**
- * @description 数组去重
-
-
+ * @description 一维数组去重，适用于简单类型的数组
  * @author crazystudent13
- * @todo 暂无
- * @method  uniqueArr
- * @param { array } arr - 非数组对象，简单的一维数组
- * @return { array } 去重完成的结果
+ * @param {Array} arr - 需要去重的一维数组
+ * @return {Array} 返回去重后的数组
  */
 export function uniqueArr(arr) {
   let arrTemp = arr || []
@@ -131,15 +114,11 @@ export function uniqueArr(arr) {
 }
 
 /**
- * @description 数组key值大小写转换，常用来处理接口返回的不规则结果
-
-
+ * @description 转换数组对象的键名大小写，常用于处理接口返回的数据格式
  * @author crazystudent13
- * @todo 暂无
- * @method  upperOrLowerKeys
- * @param { array } arr - 将数组对象中的key转换为大写key
- * @param { string } code - 转换的方向 upper 代表转大写，lower代表转小写
- * @return { array } 字段值转换完成的数组结果
+ * @param {Array} arr - 需要转换键名的数组对象
+ * @param {string} code - 转换方向：'upper' 转大写，'lower' 转小写
+ * @return {Array} 返回键名转换完成后的数组
  */
 export function upperOrLowerKeys(arr, code) {
   let newArray = []

@@ -1,10 +1,10 @@
 /**
- * @description 判断字符串宽度，会用来在一些特殊的地方使用
+ * @description 计算字符串的像素宽度，常用于文本渲染和布局场景
  * @constructor
- * @author，crazystudent13
- * @param { number } str - 需要判断字符串
- * @param { string } standard - 字体标准，默认'normal 12px Robot'
- * @return { number }  返回字符串宽度结果
+ * @author crazystudent13
+ * @param {string} str - 需要计算宽度的字符串
+ * @param {string} [standard='normal 12px Robot'] - 字体样式标准
+ * @return {number} 返回字符串的像素宽度值
  */
 export function computeStrWidth(str, standard) {
   let canvas = document.createElement('canvas')
@@ -17,11 +17,11 @@ export function computeStrWidth(str, standard) {
 }
 
 /**
- * @description 生成随机码,常用来做些简单的随机码
+ * @description 生成指定位数的随机验证码，支持数字和大写字母组合
  * @constructor
- * @author，crazystudent13 
- * @param { number } len - 需要生成的随机码位数
- * @return { string }  返回字符串宽度结果
+ * @author crazystudent13
+ * @param {number} len - 需要生成的随机码位数，默认为 4 位
+ * @return {string} 返回生成的随机码字符串
  */
 export function createRandomCode(len) {
   let code = ''
@@ -37,14 +37,14 @@ export function createRandomCode(len) {
 }
 
 /**
- * @description 前端导出自定义导出excel文件
+ * @description 前端导出 Excel 文件，将表格数据转换为 Excel 格式下载
  * @constructor
- * @author，crazystudent13
- * @todo，这个方法不推荐使用，主要原因是标准和之前的数据字典参数不统一,未来可能会有破坏性的改动
- * @param { number } array - 表单数据
- * @param { array } tableHeader - 需要生成的表头数组，按照[{value:'',describe:''}] 的形式
- * @param { string } fileName - 生成的文件名称
- * @return { string }  返回字符串宽度结果
+ * @author crazystudent13
+ * @deprecated 不推荐使用，主要原因是字段标准和数据字典参数不统一，未来可能会有破坏性改动
+ * @param {Array} array - 表单数据数组
+ * @param {Array} tableHeader - 表头配置数组，格式为 [{value:'', describe:''}]
+ * @param {string} [fileName] - 生成的文件名，不传则使用时间戳命名
+ * @return {void}
  */
 export function exportExcelFile(array, tableHeader, fileName) {
   let fileNameTemp = fileName || new Date().valueOf()
@@ -76,7 +76,12 @@ export function exportExcelFile(array, tableHeader, fileName) {
   document.body.removeChild(link)
 }
 
-// 测试方法包
+/**
+ * @description 打印欢迎信息，用于测试方法包是否正常加载
+ * @constructor
+ * @author crazystudent13
+ * @return {void}
+ */
 export function logCat() {
-  console.log('欢迎使用cat方法包')
+  console.log('欢迎使用 cat 方法包')
 }
