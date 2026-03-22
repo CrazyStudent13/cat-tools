@@ -21,7 +21,13 @@ import * as accountRules from './rules/account.js'
 import * as typeRules from './rules/type.js'
 let formRules = Object.assign(otherRules, accountRules, typeRules)
 
+// 文件处理相关方法
+import * as imageFile from './file/image.js'
+import * as excelFile from './file/excel.js'
+import * as otherFile from './file/other.js'
+let fileMethods = Object.assign(imageFile, excelFile, otherFile)
+
 // 整合所有的方法
-let catTools = Object.assign(array, common, time, number, dict, string, other, formRules)
+let catTools = Object.assign(array, common, time, number, dict, string, other, formRules, fileMethods)
 
 export { catTools }
