@@ -10,12 +10,16 @@
     "jest-environment-jsdom": "^29.7.0",
     "jsdoc": "^3.6.11",
     "minami": "^1.2.3",
-    "rollup": "^2.70.1"
+    "rollup": "^2.70.1",
+    "vitepress": "^1.6.4"
   },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "doc": "jsdoc dist/index.js -c config/jsdoc.json",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "test": "jest --config=config/jest.config.js",
     "test:watch": "jest --config=config/jest.config.js --watch",
     "test:coverage": "jest --config=config/jest.config.js --coverage"
