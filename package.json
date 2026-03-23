@@ -22,16 +22,43 @@
     "docs:preview": "vitepress preview docs",
     "test": "jest --config=config/jest.config.js",
     "test:watch": "jest --config=config/jest.config.js --watch",
-    "test:coverage": "jest --config=config/jest.config.js --coverage"
+    "test:coverage": "jest --config=config/jest.config.js --coverage",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "name": "cat-tools",
   "version": "1.1.31",
+  "description": "JavaScript 实用工具库，提供数组、字符串、数字、时间等常用方法",
   "main": "index.js",
+  "module": "dist/index.js",
+  "files": [
+    "index.js",
+    "dist/",
+    "src/",
+    "README.MD",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/CrazyStudent13/cat-tools.git"
   },
+  "keywords": [
+    "javascript",
+    "utils",
+    "utilities",
+    "array",
+    "string",
+    "number",
+    "time",
+    "validation",
+    "tools"
+  ],
   "author": "crazystudent13",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/CrazyStudent13/cat-tools/issues"
+  },
+  "homepage": "https://github.com/CrazyStudent13/cat-tools#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }

@@ -1,0 +1,65 @@
+# Node modules
+node_modules/
+
+# Build outputs - 保留 dist 目录用于发布
+# dist/
+
+# Source files - 排除源码（因为已经打包到 dist）
+src/
+
+# Documentation source - 排除文档源码
+docs/.vitepress/
+docs/api/CHANGELOG.md
+docs/api/DOCUMENTATION_SUMMARY.md
+docs/api/INDEX.md
+docs/VITEPRESS_*.md
+docs/README_DOCS.md
+
+# Test files
+test/
+coverage/
+.nyc_output/
+.jest/
+
+# Config files (not needed for runtime)
+config/
+rollup.config.js
+.eslintrc*
+.prettierrc
+.editorconfig
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env*
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Git files
+.git/
+.gitignore
+.github/
+
+# Lingma AI Assistant
+.lingma/
+
+# Package lock files
+# package-lock.json (可选，根据发布策略决定)
